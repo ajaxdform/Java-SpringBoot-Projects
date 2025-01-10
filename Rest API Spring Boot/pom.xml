@@ -76,7 +76,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>5.3.39</version>
+			
 		</dependency>
 	</dependencies>
 
@@ -97,4 +97,13 @@
 		</plugins>
 	</build>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>6.2.1</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
