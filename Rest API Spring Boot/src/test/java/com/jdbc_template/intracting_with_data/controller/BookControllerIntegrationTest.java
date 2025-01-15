@@ -1,6 +1,7 @@
 package com.jdbc_template.intracting_with_data.controller;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -26,6 +27,7 @@ public class BookControllerIntegrationTest {
 
     private BookServices bookServices;
 
+    @Autowired
     public BookControllerIntegrationTest(MockMvc mockMvc, ObjectMapper objectMapper, BookServices bookServices) {
         this.mockMvc = mockMvc;
         this.bookServices = bookServices;

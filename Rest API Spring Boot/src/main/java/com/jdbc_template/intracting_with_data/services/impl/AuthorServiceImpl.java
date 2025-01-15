@@ -28,10 +28,10 @@ public class AuthorServiceImpl implements AuthorServices {
     @Override
     public List<AuthorEntity> findAll() {
         return StreamSupport.stream(authorRepository
-                                                    .findAll()
-                                                    .spliterator(), 
-                                                    false)
-                                    .collect(Collectors.toList());
+                .findAll()
+                .spliterator(),
+                false)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -52,9 +52,7 @@ public class AuthorServiceImpl implements AuthorServices {
             Optional.ofNullable(authorEntity.getName()).ifPresent(existingAuthor::setName);
             Optional.ofNullable(authorEntity.getAge()).ifPresent(existingAuthor::setAge);
             return authorRepository.save(existingAuthor);
-        }).orElseThrow(() -> 
-            new RuntimeException("Author Does Not Exist")
-        );
+        }).orElseThrow(() -> new RuntimeException("Author Does Not Exist"));
     }
 
     @Override

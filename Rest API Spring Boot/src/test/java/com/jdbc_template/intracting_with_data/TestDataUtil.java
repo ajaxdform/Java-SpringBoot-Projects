@@ -46,7 +46,7 @@ public final class TestDataUtil {
         return BookEntity.builder()
         .isbn("3445-332-5566-4433")
         .title("Negotitor")
-        .authorEntity(author)
+        .author(author)
         .build();
     }
     public static BookDto createTestbookDtoA(final AuthorDto author) {
@@ -69,7 +69,7 @@ public final class TestDataUtil {
         return BookEntity.builder()
         .isbn("3445-332-5566-7736")
         .title("The Scars")
-        .authorEntity(author)
+        .author(author)
         .build();
     }
 
@@ -77,7 +77,7 @@ public final class TestDataUtil {
         return BookEntity.builder()
         .isbn("3445-332-5566-7765")
         .title("The Life")
-        .authorEntity(author)
+        .author(author)
         .build();
     }
 }
