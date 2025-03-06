@@ -11,7 +11,10 @@ import com.edigeest.journalentry.entity.JournalEntity;
 import com.edigeest.journalentry.entity.Users;
 import com.edigeest.journalentry.repository.JournalRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class JournalService {
 
     @Autowired
@@ -28,7 +31,7 @@ public class JournalService {
             user.getJournalEntity().add(saved);
             userService.saveNewEntry(user);
         } catch (Exception e) {
-            System.err.println(e);
+            log.error("Error occured: " , e);
             throw new RuntimeException("An error while saving the entry..", e);
         }
     }
@@ -58,7 +61,7 @@ public class JournalService {
                 journalRepository.deleteById(id);
             }
         } catch (Exception e) {
-            System.out.println(e);
+            log.error("Error occured: ", e);
             throw new RuntimeException("an eror occured while deleting the entity.", e);
         }
         return removed;

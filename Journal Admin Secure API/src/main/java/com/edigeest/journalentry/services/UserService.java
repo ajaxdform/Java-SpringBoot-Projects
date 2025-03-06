@@ -12,25 +12,32 @@ import org.springframework.stereotype.Service;
 import com.edigeest.journalentry.entity.Users;
 import com.edigeest.journalentry.repository.UserRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class UserService {
-    
+
     @Autowired
     private UserRepository userRepository;
 
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public void saveEntry(Users users) {
-        Users existing = userRepository.findByUsername(users.getUsername());
+        try {
+            Users existing = userRepository.findByUsername(users.getUsername());
 
-        if(existing != null) {
-            System.out.println("Before Save - Password: " + existing.getPassword());
+            if (existing != null) {
+                log.info("Before Save - Password: " + existing.getPassword());
+            }
+            users.setPassword(passwordEncoder.encode(users.getPassword()));
+            users.setRoles(Arrays.asList("USER"));
+            userRepository.save(users);
+
+            log.info("After Save - Password: " + users.getPassword());
+        } catch (Exception e) {
+            log.error("hhhahahhahhah", e);
         }
-        users.setPassword(passwordEncoder.encode(users.getPassword()));
-        users.setRoles(Arrays.asList("USER"));
-        userRepository.save(users);
-
-        System.out.println("After Save - Password: " + users.getPassword());
     }
 
     public void saveNewEntry(Users users) {
