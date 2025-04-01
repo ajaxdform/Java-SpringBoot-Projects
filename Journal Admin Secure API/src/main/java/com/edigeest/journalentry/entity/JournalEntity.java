@@ -1,8 +1,11 @@
 package com.edigeest.journalentry.entity;
 
+import java.time.LocalDateTime;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.edigeest.journalentry.enums.Sentiment;
 import com.mongodb.lang.NonNull;
 
 import lombok.AllArgsConstructor;
@@ -22,4 +25,8 @@ public class JournalEntity {
     private String title;
 
     private String content;
+
+    private LocalDateTime date;
+
+    private Sentiment sentiment;
 }

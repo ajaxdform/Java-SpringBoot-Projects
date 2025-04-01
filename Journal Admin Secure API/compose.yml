@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  redis-stack:
+    image: redis/redis-stack-server:latest
+    container_name: redis-stack-dev
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    environment:
+      - REDIS_ARGS=--requirepass mypassword

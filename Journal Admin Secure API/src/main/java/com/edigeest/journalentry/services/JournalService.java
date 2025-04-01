@@ -1,5 +1,6 @@
 package com.edigeest.journalentry.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,7 @@ public class JournalService {
     public void saveEntry(JournalEntity journalEntity, String username) {
         try {
             Users user = userService.findBYUser(username);
+            journalEntity.setDate(LocalDateTime.now());
             JournalEntity saved = journalRepository.save(journalEntity);
             user.getJournalEntity().add(saved);
             userService.saveNewEntry(user);

@@ -53,6 +53,7 @@ public class UserController {
         Users userInDB = userService.findBYUser(username);
         userInDB.setUsername(users.getUsername());
         userInDB.setPassword(users.getPassword());
+        userInDB.setSentimentAnalysis(users.isSentimentAnalysis());
         userService.saveEntry(userInDB);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
